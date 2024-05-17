@@ -414,6 +414,20 @@ transition-duration: 500ms;
   border-radius: 50%;
   transition-duration: 500ms;
 }
+.appear{
+  opacity: 0;
+}
+.appear-reflection{
+  opacity: 0;
+}
+.appear-reflection.in-view{
+  opacity: 0;
+  animation: fadeAnimation;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+}
 .appear.in-view {  
   animation: fadeInLeftBig;
   animation-duration: 1s;
@@ -422,6 +436,10 @@ transition-duration: 500ms;
   backface-visibility: hidden;
 }
 @keyframes fadeInLeftBig {
-  from { opacity: 0; transform: translate3d(0,100px, 0); }
+  from { opacity: 0; transform: translate3d(0,500px, 0); }
   to { opacity: 1; transform: none; }
+}
+@keyframes fadeAnimation {
+  from { opacity: 0;}
+  to { opacity: 1;}
 }

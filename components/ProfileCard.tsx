@@ -13,13 +13,13 @@ interface Props {
 
 export default function ProfileCard({ profileData }: Props) {
   return (
-    <div className="animation-element appear px-12 py-10">
+    <div className="px-12 py-10">
       <div className="flex items-center gap-[20px]">
         <div>
           <img
             src={profileData.ownersPhoto.url}
             alt="userPic"
-            className="gray-image cursor-pointer duration-500 w-[200px] w-[200px] block p-0 z-20 relative shadow-lg  rounded-full border-4 border-white border-solid"
+            className="gray-image cursor-pointer duration-500 w-[200px] block p-0 z-20 relative shadow-lg  rounded-full border-4 border-white border-solid"
           />
           {/* <Typing /> */}
         </div>

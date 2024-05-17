@@ -69,12 +69,15 @@ const MySlider = (props) => {
                                 ...getStyles(i)
                             }}
                         >
-                            <SliderContent {...item} index={Math.abs(activeSlide - i)} />
+                            <SliderContent  {...item} setShowWork={props.setShowWork} setCurrentWork={props.setCurrentWork} index={Math.abs(activeSlide - i)} />
                         </div>
                         <div
-                            className="reflection xl:w-[80.5rem] lg:w-[66rem]"
+
+                            className="animation-element appear-reflection reflection xl:w-[80.5rem] lg:w-[66rem]"
                             style={{
+                                animationDelay: `${200 * Math.abs(activeSlide - i) + 3000}ms`,
                                 background: `linear-gradient(to bottom, ${'#eeeeee'}40, transparent)`,
+                                opacity: 0,
                                 ...getStyles(i)
                             }}
                         />
@@ -83,7 +86,9 @@ const MySlider = (props) => {
             </div>
             {/* carousel */}
 
-            <div className="fixed bottom-[20px] flex gap-[40px]">
+            <div
+                style={{ animationDelay: '3000ms', zIndex: 20 }}
+                className="animation-element appear fixed  bottom-[20px] flex gap-[40px]">
                 <div
                     className="arrow-btn"
                     onClick={prev}
@@ -103,16 +108,16 @@ const MySlider = (props) => {
     );
 };
 
-const SliderContent = ({ Component, index }) => {
+const SliderContent = ({ Component, setCurrentWork, setShowWork, index }) => {
     return (
-        <div className="sliderContent animation-element appear"
-            style={{ animationDelay: `${200 * index}ms` }}
+        <div className={`sliderContent ${'animation-element'} appear`}
+            style={{ animationDelay: `${200 * index + 3000}ms` }}
 
         >
             <section className="z-10 w-full h-full lg:w-[115rem] xl:w-[126.8rem] lg:h-[62.5rem] flex justify-center p-10 sm:p-24 lg:p-0">
                 <div className="xl:w-[80.5rem] lg:w-[66rem] w-full h-full lg:py-6">
                     <div className="p-[30px] relative bg-white text-[#919191] h-full  rounded-[10px] shadow-lg">
-                        {Component()}
+                        <Component setCurrentWork={setCurrentWork} setShowWork={setShowWork} />
                     </div>
                 </div>
             </section>

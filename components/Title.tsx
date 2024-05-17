@@ -12,18 +12,23 @@ export default function Title({ name, currentMenu, setCurrentMenu }: Props) {
   const menus = {
     workTabs: [
       {
-        tab: 'new'
+        tab: 'All'
       },
       {
-        tab: 'new1'
+        tab: 'Frontend'
       },
       {
-        tab: 'new2'
+        tab: 'FullStack'
       },
+      {
+        tab: 'Blockchain'
+      },
+
+
     ]
   }
   return (
-    <div className="animation-element appear text-center relative before:bottom-0 borderLeft z-20 py-10 flex flex-wrap gap-8 justify-center sm:justify-between items-center">
+    <div className="text-center relative before:bottom-0 borderLeft z-20 py-10 flex flex-wrap gap-8 justify-center sm:justify-between items-center">
       <div className="text-[#5c5c5c] relative w-full tracking-wide capitalize text-3xl text-gray-300 font-medium">
         {name}
       </div>

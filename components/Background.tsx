@@ -18,7 +18,9 @@ const Background = () => {
 
   return (
     <div>
-      <Image layout='fill' className="w-[100vw] h-[100vh] absolute top-0 left-0" src="/images/bg.jpg" alt="" />
+      <Image layout='fill'
+        style={{ zIndex: 0 }}
+        className="w-[100vw]  h-[100vh] absolute top-0 left-0" src="/images/bg.jpg" alt="" />
       <Particles
         id="tsparticles"
         init={particlesInit}

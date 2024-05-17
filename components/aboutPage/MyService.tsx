@@ -13,7 +13,7 @@ interface Props {
 export default function MyService({ name, Icon, desc }: Props) {
   return (
     <li
-      className={`animation-element appear before:bottom-0 relative relative customBorder`}
+      className={` before:bottom-0 relative relative customBorder`}
     >
       <div className="py-10 px-12 ">
         <div className="flex items-center gap-[10px]">

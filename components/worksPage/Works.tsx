@@ -2,78 +2,22 @@
 import { useState, useMemo } from "react"
 import Title from "../Title"
 import Work from "./Work"
-
+import { worksData } from "../../data"
 import { motion, AnimatePresence } from "framer-motion"
 
-const worksData = [
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new']
-  },
 
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new2']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new2']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new2']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new1']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new']
-  },
-  {
-    id: "1",
-    title: 'title',
-    imageUrl: '/images/g-9.jpg',
-    workTabs: ['new2']
-  },
-]
-export default function Works() {
-  const [currentTab, setcurrnetTab] = useState('new');
+export default function Works(props?: { setShowWork: (v: boolean) => void, setCurrentWork: (v: number) => void }) {
+
+  const [currentTab, setcurrnetTab] = useState('All');
   const [isOpen, setIsOpen] = useState<string | null>(null)
 
   const filteredWorks = useMemo(() => {
     if (worksData === undefined) return
+    if (currentTab === 'All') {
+      console.log(currentTab);
+
+      return worksData;
+    }
     return worksData.filter((w) =>
       w.workTabs.some((t) => t === currentTab)
     )
@@ -94,10 +38,10 @@ export default function Works() {
           {filteredWorks &&
             filteredWorks.map((w) => (
               <Work
+                setCurrentWork={props.setCurrentWork}
+                setShowWork={props.setShowWork}
                 key={w.id}
-                title={w.title}
-                imageUrl={w.imageUrl}
-                projectId={w.id}
+                workData={w}
               />
             ))}
         </AnimatePresence>
